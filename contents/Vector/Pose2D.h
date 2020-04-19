@@ -19,6 +19,18 @@ public:
     // Constructors //
     Pose2D() = default;
     constexpr Pose2D(double _x, double _y, double _theta) : x(_x), y(_y), theta(_theta) {}
+    constexpr Pose2D(const Pose2D &v, double _theta)
+    {
+        x = v.x;
+        y = v.y;
+        theta = _theta;
+    }
+    constexpr Pose2D(double _x, double _y) : x(_x), y(_y) {}
+    constexpr Pose2D(const Pose2D &v)
+    {
+        x = v.x;
+        y = v.y;
+    }
 
     // Public Functions //
     bool equals(const Pose2D &v)
