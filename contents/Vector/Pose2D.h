@@ -18,15 +18,19 @@ public:
 
     // Constructors //
     Pose2D() = default;
+
     constexpr Pose2D(double _x, double _y, double _theta) : x(_x), y(_y), theta(_theta) {}
-    constexpr Pose2D(const Pose2D &v, double _theta)
+
+    constexpr Pose2D(const Vector2 &v, double _theta)
     {
         x = v.x;
         y = v.y;
         theta = _theta;
     }
+
     constexpr Pose2D(double _x, double _y) : x(_x), y(_y) {}
-    constexpr Pose2D(const Pose2D &v)
+
+    constexpr Pose2D(const Vector2 &v)
     {
         x = v.x;
         y = v.y;
@@ -38,15 +42,11 @@ public:
         return *this == v;
     }
 
-    void normalize()
-    {
-        *this /= length();
-    }
-
-    void set(double _x, double _y)
+    void set(double _x, double _y, double _theta)
     {
         x = _x;
         y = _y;
+        theta = _theta;
     }
 
     void setByPolar(double r, double angle, double robot_theta)
@@ -96,11 +96,6 @@ public:
         return std::sqrt(sqrMagnitude());
     }
 
-    Pose2D normalized() const
-    {
-        return *this / length();
-    }
-
     constexpr double sqrLength() const
     {
         return sqrMagnitude();
@@ -134,6 +129,7 @@ public:
         Pose2D v = a;
         v.x += (b.x - a.x) * t;
         v.y += (b.y - a.y) * t;
+        v.theta += (b.theta - a.theta) * t;
         return v;
     }
 
