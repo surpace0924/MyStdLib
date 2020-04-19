@@ -3,6 +3,6 @@
 
 int main(void)
 {
-    std::cout << Vector2::getAngle(Vector2(0, 0), Vector2(1, 1.73)) * RAD_TO_DEG << std::endl;
+    std::cout << (myStd::Pose2D(5, 2, 3.2) - myStd::Pose2D(1, 1.73, 0)) << std::endl;
     return 0;
 }
