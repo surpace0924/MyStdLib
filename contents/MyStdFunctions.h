@@ -52,6 +52,18 @@ static inline T guard(T x, T min, T max)
 }
 
 template <typename T>
+static inline T constrainAbs(T x, T max)
+{
+    return constrain<T>(x, -max, max);
+}
+
+template <typename T>
+static inline T guardAbs(T x, T max)
+{
+    return constrainAbs<T>(x, max);
+}
+
+template <typename T>
 static inline double radians(T deg)
 {
     return (deg * DEG_TO_RAD);
