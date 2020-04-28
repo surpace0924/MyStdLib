@@ -1,25 +1,27 @@
-#ifndef Vector2_h
-#define Vector2_h
+#ifndef Pose2D_h
+#define Pose2D_h
 
 #include <iostream>
 #include <cmath>
 #include <string>
 #include "./../MyStdFunctions.h"
+#include "Vector2.h"
 
 namespace myStd
 {
-class Vector2
+class Pose2D
 {
 public:
     double x = 0;
     double y = 0;
+    double theta = 0;
 
     // Constructors //
-    Vector2() = default;
-    constexpr Vector2(double _x, double _y) : x(_x), y(_y) {}
+    Pose2D() = default;
+    constexpr Pose2D(double _x, double _y, double _theta) : x(_x), y(_y), theta(_theta) {}
 
     // Public Functions //
-    bool equals(const Vector2 &v)
+    bool equals(const Pose2D &v)
     {
         return *this == v;
     }
@@ -35,10 +37,11 @@ public:
         y = _y;
     }
 
-    void setByPolar(double r, double angle)
+    void setByPolar(double r, double angle, double robot_theta)
     {
         x = r * std::cos(angle);
         y = r * std::sin(angle);
+        theta = robot_theta;
     }
 
     // 原点中心に回転
@@ -81,7 +84,7 @@ public:
         return std::sqrt(sqrMagnitude());
     }
 
-    Vector2 normalized() const
+    Pose2D normalized() const
     {
         return *this / length();
     }
@@ -97,114 +100,118 @@ public:
     }
 
     // Static functuons //
-    static double getDot(Vector2 a, Vector2 b)
+    static double getDot(Pose2D a, Pose2D b)
     {
         return (a.x * b.x + a.y * b.y);
     }
 
-    static double getAngle(Vector2 a, Vector2 b)
+    static double getAngle(Pose2D a, Pose2D b)
     {
         return std::atan2(b.y - a.y, b.x - a.x);
     }
 
-    static double getDistance(Vector2 a, Vector2 b)
+    static double getDistance(Pose2D a, Pose2D b)
     {
-        Vector2 v = (b - a);
+        Pose2D v = (b - a);
         return v.magnitude();
     }
 
-    static Vector2 leap(Vector2 a, Vector2 b, double t)
+    static Pose2D leap(Pose2D a, Pose2D b, double t)
     {
         t = guard(t, 0.0, 1.0);
-        Vector2 v = a;
+        Pose2D v = a;
         v.x += (b.x - a.x) * t;
         v.y += (b.y - a.y) * t;
         return v;
     }
 
     // Operators //
-    constexpr Vector2 operator+() const
+    constexpr Pose2D operator+() const
     {
         return *this;
     }
 
-    constexpr Vector2 operator-() const
+    constexpr Pose2D operator-() const
     {
-        return {-x, -y};
+        return {-x, -y, -theta};
     }
 
-    constexpr Vector2 operator+(const Vector2 &v) const
+    constexpr Pose2D operator+(const Pose2D &v) const
     {
-        return {x + v.x, y + v.y};
+        return {x + v.x, y + v.y, theta + v.theta};
     }
 
-    constexpr Vector2 operator-(const Vector2 &v) const
+    constexpr Pose2D operator-(const Pose2D &v) const
     {
-        return {x - v.x, y - v.y};
+        return {x - v.x, y - v.y, theta - v.theta};
     }
 
-    constexpr Vector2 operator*(double s) const
+    constexpr Pose2D operator*(double s) const
     {
-        return {x * s, y * s};
+        return {x * s, y * s, theta * s};
     }
 
-    constexpr Vector2 operator/(double s) const
+    constexpr Pose2D operator/(double s) const
     {
-        return {x / s, y / s};
+        return {x / s, y / s, theta / s};
     }
 
-    Vector2 &operator+=(const Vector2 &v)
+    Pose2D &operator+=(const Pose2D &v)
     {
         x += v.x;
         y += v.y;
+        theta += v.theta;
         return *this;
     }
 
-    Vector2 &operator-=(const Vector2 &v)
+    Pose2D &operator-=(const Pose2D &v)
     {
         x -= v.x;
         y -= v.y;
+        theta -= v.theta;
         return *this;
     }
 
-    Vector2 &operator*=(double s)
+    Pose2D &operator*=(double s)
     {
         x *= s;
         y *= s;
+        theta *= s;
         return *this;
     }
 
-    Vector2 &operator/=(double s)
+    Pose2D &operator/=(double s)
     {
         x /= s;
         y /= s;
+        theta /= s;
         return *this;
     }
 
-    bool operator==(const Vector2 &v) const
+    bool operator==(const Pose2D &v) const
     {
-        return (x == v.x && (y == v.y));
+        return ((x == v.x) && (y == v.y) && (theta == v.y));
     }
 
-    bool operator!=(const Vector2 &v) const
+    bool operator!=(const Pose2D &v) const
     {
-        return !(x == v.x && (y == v.y));
+        return !((x == v.x) && (y == v.y) && (theta == v.y));
     }
 
 private:
 };
 
 template <class Char>
-inline std::basic_ostream<Char> &operator<<(std::basic_ostream<Char> &os, const Vector2 &v)
+inline std::basic_ostream<Char> &operator<<(std::basic_ostream<Char> &os, const Pose2D &v)
 {
-    return os << Char('(') << v.x << Char(',') << Char(' ') << v.y << Char(')');
+    return os << Char('(') << v.x << Char(',') << Char(' ') << v.y << Char(',') << Char(' ') << v.theta << Char(')');
 }
 
 template <class Char>
-inline std::basic_istream<Char> &operator>>(std::basic_istream<Char> &is, Vector2 &v)
+inline std::basic_istream<Char> &operator>>(std::basic_istream<Char> &is, Pose2D &v)
 {
     Char unused;
-    return is >> unused >> v.x >> unused >> v.y >> unused;
+    return is >> unused >> v.x >> unused >> v.y >> unused >> v.theta >> unused;
 }
 } // namespace myStd
-#endif // Vector2_h
+#endif // Pose2D_h
