@@ -9,28 +9,29 @@
 
 namespace myStd
 {
+template <typename T>
 class Pose2D
 {
 public:
-    double x = 0;
-    double y = 0;
-    double theta = 0;
+    T x = 0;
+    T y = 0;
+    T theta = 0;
 
     // Constructors //
     Pose2D() = default;
 
-    constexpr Pose2D(double _x, double _y, double _theta) : x(_x), y(_y), theta(_theta) {}
+    constexpr Pose2D(T _x, T _y, T _theta) : x(_x), y(_y), theta(_theta) {}
 
-    constexpr Pose2D(const Vector2 &v, double _theta)
+    constexpr Pose2D(const Vector2<T> &v, T _theta)
     {
         x = v.x;
         y = v.y;
         theta = _theta;
     }
 
-    constexpr Pose2D(double _x, double _y) : x(_x), y(_y) {}
+    constexpr Pose2D(T _x, T _y) : x(_x), y(_y) {}
 
-    constexpr Pose2D(const Vector2 &v)
+    constexpr Pose2D(const Vector2<T> &v)
     {
         x = v.x;
         y = v.y;
@@ -42,14 +43,14 @@ public:
         return *this == v;
     }
 
-    void set(double _x, double _y, double _theta)
+    void set(T _x, T _y, T _theta)
     {
         x = _x;
         y = _y;
         theta = _theta;
     }
 
-    void setByPolar(double r, double angle, double robot_theta)
+    void setByPolar(T r, T angle, T robot_theta)
     {
         x = r * std::cos(angle);
         y = r * std::sin(angle);
@@ -57,23 +58,23 @@ public:
     }
 
     // 原点中心に回転
-    void rotate(double angle)
+    void rotate(T angle)
     {
-        Vector2 p(0, 0);
+        Vector2<T> p(0, 0);
         rotate(p, angle);
     }
 
     // 指定座標中心(rot_x, rot_y)に回転
-    void rotate(double rot_x, double rot_y, double angle)
+    void rotate(T rot_x, T rot_y, T angle)
     {
-        Vector2 p(rot_x, rot_y);
+        Vector2<T> p(rot_x, rot_y);
         rotate(p, angle);
     }
 
     // 座標oを中心にangleだけ回転
-    void rotate(Vector2 o, double angle)
+    void rotate(Vector2<T> o, T angle)
     {
-        Vector2 p(x - o.x, y - o.y);
+        Vector2<T> p(x - o.x, y - o.y);
         p.rotate(angle);
         p.x += o.x;
         p.y += o.y;
@@ -86,44 +87,44 @@ public:
         return '(' + std::to_string(x) + ", " + std::to_string(y) + ')';
     }
 
-    double length() const
+    T length() const
     {
         return magnitude();
     }
 
-    double magnitude() const
+    T magnitude() const
     {
         return std::sqrt(sqrMagnitude());
     }
 
-    constexpr double sqrLength() const
+    constexpr T sqrLength() const
     {
         return sqrMagnitude();
     }
 
-    constexpr double sqrMagnitude() const
+    constexpr T sqrMagnitude() const
     {
         return x * x + y * y;
     }
 
     // Static functuons //
-    static double getDot(Pose2D a, Pose2D b)
+    static T getDot(Pose2D a, Pose2D b)
     {
         return (a.x * b.x + a.y * b.y);
     }
 
-    static double getAngle(Pose2D a, Pose2D b)
+    static T getAngle(Pose2D a, Pose2D b)
     {
         return std::atan2(b.y - a.y, b.x - a.x);
     }
 
-    static double getDistance(Pose2D a, Pose2D b)
+    static T getDistance(Pose2D a, Pose2D b)
     {
         Pose2D v = (b - a);
         return v.magnitude();
     }
 
-    static Pose2D leap(Pose2D a, Pose2D b, double t)
+    static Pose2D leap(Pose2D a, Pose2D b, T t)
     {
         t = guard(t, 0.0, 1.0);
         Pose2D v = a;
@@ -154,12 +155,12 @@ public:
         return {x - v.x, y - v.y, theta - v.theta};
     }
 
-    constexpr Pose2D operator*(double s) const
+    constexpr Pose2D operator*(T s) const
     {
         return {x * s, y * s, theta * s};
     }
 
-    constexpr Pose2D operator/(double s) const
+    constexpr Pose2D operator/(T s) const
     {
         return {x / s, y / s, theta / s};
     }
@@ -180,7 +181,7 @@ public:
         return *this;
     }
 
-    Pose2D &operator*=(double s)
+    Pose2D &operator*=(T s)
     {
         x *= s;
         y *= s;
@@ -188,7 +189,7 @@ public:
         return *this;
     }
 
-    Pose2D &operator/=(double s)
+    Pose2D &operator/=(T s)
     {
         x /= s;
         y /= s;
@@ -209,14 +210,14 @@ public:
 private:
 };
 
-template <class Char>
-inline std::basic_ostream<Char> &operator<<(std::basic_ostream<Char> &os, const Pose2D &v)
+template <typename Char, typename T>
+inline std::basic_ostream<Char> &operator<<(std::basic_ostream<Char> &os, const Pose2D<T> &v)
 {
     return os << Char('(') << v.x << Char(',') << Char(' ') << v.y << Char(',') << Char(' ') << v.theta << Char(')');
 }
 
-template <class Char>
-inline std::basic_istream<Char> &operator>>(std::basic_istream<Char> &is, Pose2D &v)
+template <typename Char, typename T>
+inline std::basic_istream<Char> &operator>>(std::basic_istream<Char> &is, Pose2D<T> &v)
 {
     Char unused;
     return is >> unused >> v.x >> unused >> v.y >> unused >> v.theta >> unused;
