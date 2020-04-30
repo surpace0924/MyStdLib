@@ -18,20 +18,20 @@ public:
     T theta = 0;
 
     // Constructors //
-    constexpr Pose2D() = default;
+    Pose2D() = default;
 
-    constexpr Pose2D(T _x, T _y, T _theta) : x(_x), y(_y), theta(_theta) {}
+    Pose2D(T _x, T _y, T _theta) : x(_x), y(_y), theta(_theta) {}
 
-    constexpr Pose2D(const Vector2<T> &v, T _theta)
+    Pose2D(const Vector2<T> &v, T _theta)
     {
         x = v.x;
         y = v.y;
         theta = _theta;
     }
 
-    constexpr Pose2D(T _x, T _y) : x(_x), y(_y) {}
+    Pose2D(T _x, T _y) : x(_x), y(_y) {}
 
-    constexpr Pose2D(const Vector2<T> &v)
+    Pose2D(const Vector2<T> &v)
     {
         x = v.x;
         y = v.y;

@@ -52,6 +52,7 @@ public:
     inline void setGain(const gain_t gain) { _param.gain = gain; }
     inline void setMode(const Mode mode) { _param.mode = mode; }
     inline void setSaturation(T min_v, T max_v);
+    inline void setSaturationAbs(T max_v);
 
     inline void update(T target, T now_val, T dt);
     inline T getControlVal() { return output; };
@@ -84,6 +85,14 @@ inline void PID<T>::setSaturation(T min_v, T max_v)
 {
     _param.need_saturation = true;
     _param.output_min = min_v;
+    _param.output_max = max_v;
+}
+
+template <typename T>
+inline void PID<T>::setSaturationAbs(T max_v)
+{
+    _param.need_saturation = true;
+    _param.output_min = -max_v;
     _param.output_max = max_v;
 }
 

@@ -75,7 +75,7 @@ template <typename T, typename T_fbc>
 inline void PurePursuitControl<T, T_fbc>::update(int idx, myStd::Pose2D<T> now_pose, T dt)
 {
     T distance = Pose2D<T>::getDistance(_path[idx], now_pose);
-    _param.fbc_linear.update(0, distance, dt);
+    _param.fbc_linear.update(0, -distance, dt);
     output.x = _param.fbc_linear.getControlVal();
 
     T angle = Pose2D<T>::getAngle(_path[idx], now_pose);
