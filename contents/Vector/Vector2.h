@@ -16,7 +16,7 @@ public:
     T y = 0;
 
     // Constructors //
-    Vector2() = default;
+    constexpr Vector2() = default;
     constexpr Vector2(T _x, T _y) : x(_x), y(_y) {}
 
     // Public Functions //

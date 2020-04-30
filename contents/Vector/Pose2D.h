@@ -18,7 +18,7 @@ public:
     T theta = 0;
 
     // Constructors //
-    Pose2D() = default;
+    constexpr Pose2D() = default;
 
     constexpr Pose2D(T _x, T _y, T _theta) : x(_x), y(_y), theta(_theta) {}
 
