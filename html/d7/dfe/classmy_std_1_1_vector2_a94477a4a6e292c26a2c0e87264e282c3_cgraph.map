@@ -1,0 +1,5 @@
+<map id="myStd::Vector2::getDistance" name="myStd::Vector2::getDistance">
+<area shape="rect" id="node1" title="2つのベクトルの距離を返す" alt="" coords="5,5,196,32"/>
+<area shape="rect" id="node2" href="$d7/dfe/classmy_std_1_1_vector2.html#a1b1da39de63c42b0ffc13c195b33f74f" title="このベクトルの長さを返す" alt="" coords="244,5,425,32"/>
+<area shape="rect" id="node3" href="$d7/dfe/classmy_std_1_1_vector2.html#aa189a7bbdb28afc4068c0eb946269d7d" title="このベクトルの長さの2乘を返す" alt="" coords="473,5,672,32"/>
+</map>

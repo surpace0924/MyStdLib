@@ -1,0 +1,5 @@
+<map id="myStd::Pose2D::getDistance" name="myStd::Pose2D::getDistance">
+<area shape="rect" id="node1" title="2つのベクトルの距離を返す" alt="" coords="5,5,199,32"/>
+<area shape="rect" id="node2" href="$d4/d77/classmy_std_1_1_pose2_d.html#a8fd8d0c2373fe92388dff171816a5209" title="このベクトルの長さを返す" alt="" coords="247,5,429,32"/>
+<area shape="rect" id="node3" href="$d4/d77/classmy_std_1_1_pose2_d.html#a20c9a040f21d0910aa3bf3ab35de9a68" title="このベクトルの長さの2乘を返す" alt="" coords="477,5,679,32"/>
+</map>

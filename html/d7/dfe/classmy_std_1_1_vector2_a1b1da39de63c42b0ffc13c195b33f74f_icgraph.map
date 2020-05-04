@@ -1,0 +1,7 @@
+<map id="myStd::Vector2::magnitude" name="myStd::Vector2::magnitude">
+<area shape="rect" id="node1" title="このベクトルの長さを返す" alt="" coords="476,31,657,57"/>
+<area shape="rect" id="node2" href="$d7/dfe/classmy_std_1_1_vector2.html#a94477a4a6e292c26a2c0e87264e282c3" title="2つのベクトルの距離を返す" alt="" coords="237,5,428,32"/>
+<area shape="rect" id="node3" href="$d7/dfe/classmy_std_1_1_vector2.html#a172bb8bc88293d5bd36c2b7533029c24" title="このベクトルの長さを返す" alt="" coords="255,56,411,83"/>
+<area shape="rect" id="node4" href="$d7/dfe/classmy_std_1_1_vector2.html#a47304ea32511559421411d29a662c154" title="このベクトルの大きさを1にする" alt="" coords="9,31,186,57"/>
+<area shape="rect" id="node5" href="$d7/dfe/classmy_std_1_1_vector2.html#a77f37af854c73eedd5ff9988f395756f" title="大きさが1のこのベクトルを返す" alt="" coords="5,81,189,108"/>
+</map>

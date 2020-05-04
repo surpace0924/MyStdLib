@@ -1,3 +1,7 @@
+/**
+ * @file IFBController.h
+ * @brief フィードバックコントローラの基底クラス
+**/
 #ifndef IFBController_h
 #define IFBController_h
 
@@ -8,28 +12,52 @@
 
 namespace myStd
 {
-class FBController
-{
-public:
-    void reset();
+    /**
+     * @brief フィードバックコントローラの基底クラス
+    **/
+    class FBController
+    {
+    public:
+        /**
+         * @brief リセット
+         */
+        void reset();
 
-    template <class... Args>
-    void setParam(Args... args);
+        /**
+         * @brief パラメータの設定
+         */
+        template <class... Args>
+        void setParam(Args... args);
 
-    template <class... Args>
-    void setGain(Args... args);
+        /**
+         * @brief ゲインの設定
+         */
+        template <class... Args>
+        void setGain(Args... args);
 
-    template <class... Args>
-    void setMode(Args... args);
+        /**
+         * @brief モードの設定
+         */
+        template <class... Args>
+        void setMode(Args... args);
 
-    template <class... Args>
-    void setSaturation(Args... args);
+        /**
+         * @brief 出力の最小，最大値の設定
+         */
+        template <class... Args>
+        void setSaturation(Args... args);
 
-    void update(double target, double now_val, double dt);
+        /**
+         * @brief 値の更新
+         */
+        void update(double target, double now_val, double dt);
 
-    template <typename T>
-    T getControlVal();
-};
+        /**
+         * @brief 制御量（計算結果）の取得
+         */
+        template <typename T>
+        T getControlVal();
+    };
 } // namespace myStd
 
 #endif // IFBController_h

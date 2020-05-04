@@ -1,3 +1,7 @@
+/**
+ * @file FBController.h
+ * @brief フィードバックコントローラのヘッダ
+**/
 #ifndef FBController_h
 #define FBController_h
 

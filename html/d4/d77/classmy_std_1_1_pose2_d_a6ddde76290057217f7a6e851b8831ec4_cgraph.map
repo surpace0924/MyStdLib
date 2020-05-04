@@ -1,0 +1,4 @@
+<map id="myStd::Pose2D::rotate" name="myStd::Pose2D::rotate">
+<area shape="rect" id="node1" title="指定座標中心(rot_x, rot_y)に回転" alt="" coords="5,5,161,32"/>
+<area shape="rect" id="node2" href="$d4/d77/classmy_std_1_1_pose2_d.html#a6de16b642745aa0dea5a1576a4de44b3" title="このベクトルを原点中心にangle[rad]回転" alt="" coords="209,5,365,32"/>
+</map>
