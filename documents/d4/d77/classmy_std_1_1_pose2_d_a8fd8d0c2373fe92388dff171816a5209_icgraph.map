@@ -1,0 +1,6 @@
+<map id="myStd::Pose2D::magnitude" name="myStd::Pose2D::magnitude">
+<area shape="rect" id="node1" title="このベクトルの長さを返す" alt="" coords="473,38,656,65"/>
+<area shape="rect" id="node2" href="$d4/d77/classmy_std_1_1_pose2_d.html#ae338c6ee0efade1b27e9a62ab6796a3b" title="2つのベクトルの距離を返す" alt="" coords="232,13,425,39"/>
+<area shape="rect" id="node4" href="$d4/d77/classmy_std_1_1_pose2_d.html#a7584e0134680dc7b303f249da9535d59" title="このベクトルの長さを返す" alt="" coords="249,63,408,90"/>
+<area shape="rect" id="node3" href="$d5/dee/classmy_std_1_1_pure_pursuit_control.html#a2b48b8fceed56e97320bab4817600689" title="値の更新" alt="" coords="5,5,184,47"/>
+</map>

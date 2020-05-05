@@ -1,0 +1,5 @@
+<map id="myStd::Vector2::rotate" name="myStd::Vector2::rotate">
+<area shape="rect" id="node1" title="このベクトルを原点中心にangle[rad]回転" alt="" coords="209,31,364,57"/>
+<area shape="rect" id="node2" href="$d7/dfe/classmy_std_1_1_vector2.html#ae4800378726e0519a6461195335bf336" title="指定座標中心(rot_x, rot_y)に回転" alt="" coords="6,5,161,32"/>
+<area shape="rect" id="node3" href="$d4/d77/classmy_std_1_1_pose2_d.html#ab07acb8eeb02ab28bad3c6215b22909d" title="座標oを中心にangleだけ回転" alt="" coords="5,56,161,83"/>
+</map>
