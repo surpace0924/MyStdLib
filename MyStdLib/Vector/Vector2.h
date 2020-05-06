@@ -76,8 +76,8 @@ namespace myStd
          */
         void rotate(T angle)
         {
-            Vector2 p(0, 0);
-            rotate(p, angle);
+            x = x * cos(angle) - y * sin(angle);
+            y = x * sin(angle) + y * cos(angle);
         }
 
         /**

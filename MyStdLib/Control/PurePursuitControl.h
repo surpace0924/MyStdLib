@@ -50,7 +50,7 @@ namespace myStd
          * @brief コンストラクタ 経路データで初期化
          * @param path: 経路データ
          */
-        PurePursuitControl(std::vector<Pose2D<T>> path) { set(path); }
+        PurePursuitControl(std::vector<Pose2D<T>> path) { setPath(path); }
 
         /**
          * @brief 経路データの設定
@@ -135,12 +135,15 @@ namespace myStd
     template <typename T, typename T_fbc>
     inline void PurePursuitControl<T, T_fbc>::update(int idx, myStd::Pose2D<T> now_pose, T dt)
     {
-        T distance = Pose2D<T>::getDistance(_path[idx], now_pose);
-        _param.fbc_linear.update(0, distance, dt);
+        Pose2D<T> error; // 偏差
+        // 目標までの距離に対してフィードバック制御
+        error.x = Pose2D<T>::getDistance(now_pose, _path[idx]);
+        _param.fbc_linear.update(0, error.x, dt);
         output.x = _param.fbc_linear.getControlVal();
 
-        T angle = Pose2D<T>::getAngle(_path[idx], now_pose);
-        _param.fbc_angular.update(0, angle, dt);
+        // 目標までの角度に対してフィードバック制御
+        error.theta = Pose2D<T>::getAngle(now_pose, _path[idx]) - now_pose.theta;
+        _param.fbc_angular.update(0, error.theta, dt);
         output.theta = _param.fbc_angular.getControlVal();
     }
 
