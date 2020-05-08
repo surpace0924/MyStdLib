@@ -139,12 +139,12 @@ namespace myStd
         // 目標までの距離に対してフィードバック制御
         error.x = Pose2D<T>::getDistance(now_pose, _path[idx]);
         _param.fbc_linear.update(0, error.x, dt);
-        output.x = _param.fbc_linear.getControlVal();
+        output.x = -_param.fbc_linear.getControlVal();
 
         // 目標までの角度に対してフィードバック制御
         error.theta = Pose2D<T>::getAngle(now_pose, _path[idx]) - now_pose.theta;
         _param.fbc_angular.update(0, error.theta, dt);
-        output.theta = _param.fbc_angular.getControlVal();
+        output.theta = -_param.fbc_angular.getControlVal();
     }
 
 } // namespace myStd

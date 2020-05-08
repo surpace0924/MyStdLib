@@ -27,17 +27,17 @@ namespace myStd
         /**
          * @brief コンストラクタ
          */
-        constexpr Pose2D() = default;
+        Pose2D() = default;
 
         /**
          * @brief コンストラクタ 直交座標(_x, _y, _theta)で初期化
          */
-        constexpr Pose2D(T _x, T _y, T _theta) : x(_x), y(_y), theta(_theta) {}
+        Pose2D(T _x, T _y, T _theta) : x(_x), y(_y), theta(_theta) {}
 
         /**
          * @brief コンストラクタ Vector2と角度の数値で初期化
          */
-        constexpr Pose2D(const Vector2<T> &v, T _theta)
+        Pose2D(const Vector2<T> &v, T _theta)
         {
             x = v.x;
             y = v.y;
@@ -47,12 +47,12 @@ namespace myStd
         /**
          * @brief コンストラクタ 直交座標(_x, _y)で初期化（角度はゼロ）
          */
-        constexpr Pose2D(T _x, T _y) : x(_x), y(_y) {}
+        Pose2D(T _x, T _y) : x(_x), y(_y) {}
 
         /**
          * @brief コンストラクタ Vector2で初期化（角度はゼロ）
          */
-        constexpr Pose2D(const Vector2<T> &v)
+        Pose2D(const Vector2<T> &v)
         {
             x = v.x;
             y = v.y;
